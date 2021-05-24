@@ -7,7 +7,7 @@ const MiMensaje = ({ message }) => {
                 className="message-image"
                 style={{ float:'right'}}
             />
-        )
+        );
     }
 
     return (

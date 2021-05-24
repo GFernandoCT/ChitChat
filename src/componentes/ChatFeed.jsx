@@ -2,6 +2,17 @@ import ModeloMensaje from './ModeloMensaje';
 import MiMensaje from './MiMensaje';
 import OtroMensaje from './OtroMensaje';
 
+
+// const ChatFeed = (props) => {
+//     console.log(props);
+
+//     return (
+//         <div>
+//             chatFEED
+//         </div>
+//     )
+// }
+
 const ChatFeed = (props) => {
     const{ chats, activeChat, userName, messages } = props;
 
@@ -49,7 +60,6 @@ const ChatFeed = (props) => {
             <div style = {{ height: '100px' }}/>
             <div className="message-form-container">
                 <ModeloMensaje {...props} chatId={activeChat} />
-                
             </div>
         </div>
     );
