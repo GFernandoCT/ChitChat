@@ -1,9 +1,31 @@
-const ModeloMensaje = () => {
+const OtroMensaje = ({ lastMessage, message }) => {
+    const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username;
+
     return (
-        <div>
-            El mensaje de otro usuario ha llegado.
+        <div className="message-row">
+            {isFirstMessageByUser && (
+                <div
+                    className="message-avatar"
+                    style={{ backgroundImage: `url(${message?.sender?.avatar})`}}
+                />
+            )}
+            {message?.attachments?.length > 0
+                ? (
+                    <img
+                        src={message.attachments[0].file}
+                        alt="mensaje-complemento"
+                        className="mensaje-imagen"
+                        style={{ marginLeft: isFirstMessageByUser ? '4px' : '48px' }}
+                    />
+                ) : (
+                    <div className="message" syle={{ float: 'left', backgroundColor: '#CABCDC' }}>
+                        {message.text}
+                    </div>
+                )
+            }
+
         </div>
     );
 }
 
-export default ModeloMensaje;
+export default OtroMensaje;
