@@ -2,17 +2,6 @@ import ModeloMensaje from './ModeloMensaje';
 import MiMensaje from './MiMensaje';
 import OtroMensaje from './OtroMensaje';
 
-
-// const ChatFeed = (props) => {
-//     console.log(props);
-
-//     return (
-//         <div>
-//             chatFEED
-//         </div>
-//     )
-// }
-
 const ChatFeed = (props) => {
     const{ chats, activeChat, userName, messages } = props;
 
@@ -38,7 +27,7 @@ const ChatFeed = (props) => {
                         }
                     </div>
                     <div className="read-receipts" style={{ marginRight: esMiMensaje ? '18px' : '0px', marginLeft: esMiMensaje ? '0px' : '68px'}}>
-                        read-receipts
+                        Se ha enviado el mensaje 
                     </div> 
                 </div>
             );
