@@ -2,6 +2,8 @@ import ModeloMensaje from './ModeloMensaje';
 import MiMensaje from './MiMensaje';
 import OtroMensaje from './OtroMensaje';
 
+import React from 'react'
+
 const ChatFeed = (props) => {
     const{ chats, activeChat, userName, messages } = props;
 
@@ -22,7 +24,7 @@ const ChatFeed = (props) => {
     const mostrarMensajes = () => {
         const keys = Object.keys(messages);
 
-        console.log(keys);
+        //console.log(keys);
 
         return keys.map((key,index) => {
             const message = messages[key];
@@ -57,9 +59,9 @@ const ChatFeed = (props) => {
                 </div>
             </div>
             {mostrarMensajes()}
-
+            
             <div style = {{ height: '100px' }}/>
-            <div className="message-form-container">
+            <div className="message-form-container">    
                 <ModeloMensaje {...props} chatId={activeChat} />
             </div>
         </div>
