@@ -6,8 +6,7 @@ import {SendOutlined, PictureOutlined} from '@ant-design/icons';
 const ModeloMensaje = (props) => {
     const [value, setValue] = useState('');
     const {chatId,creds} = props;
-
-
+    
 const enviarManejado = (event) => {
     event.preventDefault();
 
@@ -19,8 +18,6 @@ const enviarManejado = (event) => {
 }
     const cambioManejado = (event) =>{
         setValue(event.target.value);
-
-        isTyping(props, chatId);
     }
 
     const subirManejado = (event) => {
