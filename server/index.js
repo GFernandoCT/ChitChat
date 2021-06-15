@@ -44,6 +44,20 @@ app.post("/api/insert", (req,res) => {
      })
 });
 
+app.get("/get/lastSevenDays", (req,res) => {
+    const sqlInsert =  "SELECT * FROM `usuarioslogin` where fechaLogin>=date_add((DATE_FORMAT(NOW(), '%Y-%m-%d')), INTERVAL -7 DAY);"
+   db.query(sqlInsert, (err, results) => {
+        res.send(err);
+    })
+});
+
+app.get("/get/monthMay", (req,res) => {
+    const sqlInsert =  "SELECT * FROM `usuarioslogin` where where month(fechaLogin)=05;"
+   db.query(sqlInsert, (err, results) => {
+        res.send(err);
+    })
+});
+
 
 app.listen(3001, () => {
   console.log("Servidor corriendo en el puerto 3001")
