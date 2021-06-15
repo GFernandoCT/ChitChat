@@ -23,9 +23,7 @@ const CrearChat = (props) => {
         newChat(
             props,{'title':titulo},callback
         )
-
-        cambiarTitulo('');
-        
+        cambiarTitulo('');      
     }
 
     const botonPrueba = () => {

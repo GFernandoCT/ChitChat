@@ -1,14 +1,22 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+
+// Axios es la herramienta que nos permite realizar AJAX, es decir cargar nuevos datos en nuestra página sin 
+// la necesidad de tener que recargarla
+
 const LoginFormulario = () => {
 
-console.log()
-
+    // Usamos useState que es un herramienta muy util reciente para poder cambiar el estado sin necesidad
+    // de crear una clase. En este caso set* 
     const [usuario,setUsuario] = useState('');
     const [contraseña,setContraseña] = useState('');
     const [errores,setError] = useState('');
     
+
+    // Esta es la const que nos va a permitir guardar los logins realizados en nuestra aplicación junto axios
+    // Axios.post hace una llamada a una url de nuestro backend en formato post con el fin de realizar un insert
+    // en nuestro esquema. En este caso queremos almacenar el usuario y la fecha en la que iniciar sesión
     const guardarInicio = () => {
 
         axios.post("http://localhost:3001/api/insert",
@@ -19,6 +27,8 @@ console.log()
     });
     }
 
+
+    
     const subirManejado = async (e) => {
         e.preventDefault();
 
