@@ -3,9 +3,9 @@ import React,{useState} from 'react';
 import { NewChatForm } from 'react-chat-engine';
 import { newChat } from 'react-chat-engine';
 import { LogoutOutlined } from '@ant-design/icons';
+import axios from 'axios'
 
-const CrearChat = (props) => {
-
+const CrearChat = (props) => {  
 
     const [palabra, cambiarTitulo] = useState('');
     const callback = (data) => console.log(data)
@@ -18,7 +18,7 @@ const CrearChat = (props) => {
         event.preventDefault();
         
         const titulo = palabra.trim();
-
+        
         if(palabra.length > 0)
         newChat(
             props,{'title':titulo},callback
@@ -29,8 +29,8 @@ const CrearChat = (props) => {
     }
 
     const botonPrueba = () => {
-    localStorage.removeItem('username');
-    localStorage.removeItem('password')
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('clave')
         window.location.reload();
     }
 

@@ -2,9 +2,22 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const LoginFormulario = () => {
+
+console.log()
+
     const [usuario,setUsuario] = useState('');
     const [contraseña,setContraseña] = useState('');
     const [errores,setError] = useState('');
+    
+    const guardarInicio = () => {
+
+        axios.post("http://localhost:3001/api/insert",
+        {nombreUser: usuario, 
+        fechaLog: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+    }).then (() => {
+        alert("Se ha conseguido insertar el dato en la bbdd")
+    });
+    }
 
     const subirManejado = async (e) => {
         e.preventDefault();
@@ -16,8 +29,10 @@ const LoginFormulario = () => {
             // usuario | contraseña => chatengine -> give messages
             await axios.get('https://api.chatengine.io/chats',{ headers: authObject });
             
-            localStorage.setItem('username', usuario);
-            localStorage.setItem('password', contraseña);
+            localStorage.setItem('usuario', usuario);
+            localStorage.setItem('clave', contraseña);
+
+            guardarInicio();
 
             window.location.reload();
             setError('');
