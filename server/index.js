@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
-const { AudioOutlined } = require('@ant-design/icons');
 
 const db = mysql.createPool({
     host: "localhost",
@@ -38,23 +37,24 @@ app.post("/api/insert", (req,res) => {
 // });
 
  app.get("/mes/", (req,res) => {
-     const sqlInsert =  "SELECT * FROM `usuarioslogin` ORDER BY CAST('fechaLogin' AS DATE);"
+     const sqlInsert =  "SELECT * FROM usuarioslogin ORDER BY CAST(fechaLogin AS DATE) desc"
     db.query(sqlInsert, (err, results) => {
-         res.send(err);
+         res.send(results);
      })
 });
 
-app.get("/get/lastSevenDays", (req,res) => {
-    const sqlInsert =  "SELECT * FROM `usuarioslogin` where fechaLogin>=date_add((DATE_FORMAT(NOW(), '%Y-%m-%d')), INTERVAL -7 DAY);"
+app.get("/ultimaSemana", (req,res) => {
+    const sqlInsert =  "SELECT * FROM `usuarioslogin` where CAST(fechaLogin AS DATE)>=date_add((DATE_FORMAT(NOW(), '%Y-%m-%d')), INTERVAL -7 DAY);"
    db.query(sqlInsert, (err, results) => {
-        res.send(err);
+        res.send(results);
     })
 });
 
-app.get("/get/monthMay", (req,res) => {
-    const sqlInsert =  "SELECT * FROM `usuarioslogin` where where month(fechaLogin)=05;"
-   db.query(sqlInsert, (err, results) => {
-        res.send(err);
+app.get("/obtenerMes/:id", (req,res) => {
+    var id = req.params.id;
+    const sqlInsert =  "SELECT * FROM `usuarioslogin` where month(CAST(fechaLogin AS DATE))= ?;"
+   db.query(sqlInsert,[id], (err, results) => {
+        res.send(results);
     })
 });
 
