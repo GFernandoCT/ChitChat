@@ -1,20 +1,35 @@
 import {useState} from 'react';
 import {sendMessage, isTyping} from 'react-chat-engine';
 import {SendOutlined, PictureOutlined} from '@ant-design/icons';
+import axios from 'axios';
 
 
 const ModeloMensaje = (props) => {
     const [value, setValue] = useState('');
     const {chatId,creds} = props;
     
+     const guardarMensaje = () => {
+         var chatIdentificador = chatId;
+
+         axios.post("http://localhost:3001/api/guardarMensaje",
+         {idChat: chatIdentificador,
+         nombreUser: localStorage.getItem('usuario'), 
+         mensaje: value.trim(),
+         fechaLog: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+     }).then (() => {
+         alert("Se ha conseguido insertar el dato en la bbdd")
+     });
+     }
+
 const enviarManejado = (event) => {
     event.preventDefault();
-
     const text = value.trim();
 
-    if(text.length > 0) sendMessage(creds, chatId, { text });
+   
+    if(text.length > 0)  sendMessage(creds, chatId, { text }, guardarMensaje());
     
     setValue('');
+    
 }
     const cambioManejado = (event) =>{
         setValue(event.target.value);
