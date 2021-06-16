@@ -66,6 +66,9 @@ const ChatCuerpo = (props) => {
     // Esto tiene la finalidad de que cuando los mensajes aun no se han cargado se muestre un pequeño texto
     if(!chat) return 'Cargando mensajes...';
 
+    //console.log(chat.people.map((person) => ` ${ person.person.username}`));
+
+    console.log(props)
 
     // Finalmente creamos la estructura html deseada utilizando "plantillas literales" como {chat.title} para cargar ciertos valores
     // sin tener que añadirlos a una variable

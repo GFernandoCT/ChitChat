@@ -19,7 +19,7 @@ const LoginFormulario = () => {
     // en nuestro esquema. En este caso queremos almacenar el usuario y la fecha en la que iniciar sesión
     const guardarInicio = () => {
 
-        axios.post("http://localhost:3001/api/insert",
+        axios.post("http://localhost:3001/api/añadirLogin",
         {nombreUser: usuario, 
         fechaLog: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
     }).then (() => {
